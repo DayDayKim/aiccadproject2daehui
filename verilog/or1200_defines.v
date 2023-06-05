@@ -1819,3 +1819,8 @@
 //`define OR1200_BOOT_ADR 32'hf0000100
 // Boot from 0x100
  `define OR1200_BOOT_ADR 32'h00000100
+
+//
+// Active additional design
+//
+ `define ACTIVE_ADDITONAL_DESIGN

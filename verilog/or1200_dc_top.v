@@ -89,6 +89,29 @@ module or1200_dc_top(
 	///////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////
 	
+    ///////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////
+	// Additional signals
+`ifdef ACTIVE_ADDITONAL_DESIGN
+    // Input signals
+    test_si, wrp_si,
+    REFCLK, RST,
+    SPC_DISABLE,
+    scan_enable,
+    test_mode,
+    wrp_shift,
+    pipe_clk,
+    WSI, WRCK, SHIFTWR, CAPTUREWR, UPDATEWR, SELECTWIR, WRSTN,
+    core_occ_test_mode_local, core_occ_test_mode_upper , occ_reset , occ_si,
+    ate_clk, pll_bypass, TM1, TM2, TM3,
+
+    //output signals
+    test_so, wrp_so, WSO, occ_so
+`endif
+	///////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////
+	
+	
 );
 
 parameter dw = `OR1200_OPERAND_WIDTH;
@@ -163,6 +186,46 @@ output  			mtspr_dc_done;
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+// Additional Signals
+`ifdef ACTIVE_ADDITONAL_DESIGN
+    // Input signals
+input  [7:0] 	test_si;
+input  [1:0] 	wrp_si;
+input REFCLK;
+input RST;
+input SPC_DISABLE;
+input scan_enable;
+input test_mode;
+input wrp_shift;
+input pipe_clk;
+input WSI;
+input WRCK;
+input SHIFTWR;
+input CAPTUREWR;
+input UPDATEWR;
+input SELECTWIR;
+input WRSTN;
+input core_occ_test_mode_local;
+input core_occ_test_mode_upper;
+input occ_reset;
+input occ_si;
+input ate_clk;
+input pll_bypass;
+input TM1;
+input TM2;
+input TM3;
+
+//output signals
+output [7:0] 	test_so;
+output [1:0] 	wrp_so;
+output WSO;
+output occ_so;
+`endif
+
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
 wire clk_div1, clk_div2, clk_div4;
 wire pll_ori;
 
