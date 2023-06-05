@@ -24,9 +24,9 @@ set fmodel 		$env(fmodel)
 
 set filename atpg_${fmodel}_${spf}
 
-set design_name des_unit_core1
+set design_name or1200_dc_top
 
-set netlistname ./des_unit_core1_nopll.v
+set netlistname ../03_dc/outputs/${design_name}.v
 
 set_messages -log ./logs/tmax.${filename}.log -replace -level expert
 
@@ -73,9 +73,7 @@ if {$fmodel == "sa"} {
 	
 	set_faults -model stuck
         
-	#run_drc -patternexec ${spf} ../week05_test/outputs/des_unit.${spf}.spf
-	run_drc -patternexec ${spf}_occ_bypass ./des_unit.${spf}_occ_bypass.spc_disable.spf
-	#run_drc -patternexec ${spf} ../3_scan/outputs/des_unit.${spf}.spf
+	run_drc -patternexec ${spf}_occ_bypass ../02_testmax/outputs/or1200.${spf}_occ_bypass.spc_disable.spf
 
 }
 
