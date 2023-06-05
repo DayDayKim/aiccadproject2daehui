@@ -95,7 +95,7 @@ export share_wrapper_en=no;	# Disables Shared Wrapper (Default)
 
 # Libraries
 #setenv ILANE_LIB_PATH "/data2/incendio/2021_CAD/TESTCASE/iLane_Rev5.0_libs"
-export ILANE_LIB_PATH="/data3/Class/AICCAD/2021_2/2021_2_aiccad00/_THKim/TESTCASE/iLane_Rev5.0_libs"
+export ILANE_LIB_PATH="/data3/Class/AICCAD/2023_1/2023_1_aiccad03/iLane_Rev5.0_libs"
 
 
 export VCS_HOME="/data1/synopsys/vcs/vcs_2020.03/vcs/Q-2020.03-SP2-8"
