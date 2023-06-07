@@ -1,21 +1,12 @@
 lappend search_path .
 
-read_file ../inputs/des_a1.v
-read_file ../inputs/des_b1.v
-read_file ../inputs/des_c1.v
-read_file ../inputs/des_ctl1.v
-read_file ../inputs/des_d1.v
-read_file ../inputs/des_decrypt1.v
-read_file ../inputs/des_encrypt1.v
-read_file ../inputs/common_modules.v
-read_file ../inputs/memory_core0.v
-read_file ../inputs/des_unit_core0.v
-
+read_file ../../03_dc/outputs/or1200_dc_top.v
+read_file -type gateslibdb  /data3/Class/AICCAD/2023_1/2023_1_aiccad03/iLane_Rev5.0_libs/db/saed32rvt_tt1p05v125c.db
 read_file -type sgdc "../scripts/options.sgdc"
 set_option language_mode mixed
 set_option projectwdir FUSA_WORK_DIR
 set_option overloadrules ErrorAnalyzeBBox
-set_option top des_unit_core0
+set_option top or1200_dc_top
 set_option enableSV yes
 
 define_goal test_goal -policy {dft_dsm } {

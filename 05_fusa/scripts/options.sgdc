@@ -1,6 +1,6 @@
-current_design "des_unit_core0"
+current_design "or1200_dc_top"
 
-ser_data -name "des_unit_core0" -lreg 0.01
+ser_data -name "or1200_dc_top" -lreg 0.01
 
 force_probability -type ACTIVE_LOW_FLIP_FLOP_SET ACTIVE_LOW_FLIP_FLOP_RESET -control_zero 0.01 -control_one 0.99 -functional
 force_probability -type ACTIVE_HIGH_FLIP_FLOP_SET ACTIVE_HIGH_FLIP_FLOP_RESET -control_zero 0.99 -control_one 0.01 -functional
