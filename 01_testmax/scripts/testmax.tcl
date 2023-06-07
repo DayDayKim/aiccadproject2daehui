@@ -19,6 +19,7 @@
 # 1.loading design / global setting 
 #-------------------------------------------------------------
 set netlist_flow $env(netlist_flow)
+set design or1200_dc_top
 
 set search_path [concat . $env(ILANE_LIB_PATH) ${search_path}] 
 set_app_options -as_user_default -name hdlin.analyze_searching_verbose_mode -value true
@@ -30,12 +31,11 @@ create_lib -ref_libs [list  $libs_path/NDM/sadsls0c4l2p2048x32m8b1w0c0p0d0r1s2z1
 
 #Read the Verilogs or filelist
 if { $netlist_flow == "yes"  } {
-	analyze -format verilog -vcs "~/project1/1_synthesis/outputs/des_unit_core1.v" 
+	analyze -format verilog -vcs "/data3/Class/AICCAD/2023_1/2023_1_aiccad03/project2/or1200_dc_top/00_syn/outputs/${design}.v"
 } else {
 	analyze -format sverilog -vcs "-f ../scripts/sms_rtl.f" 
 }
 
-set design des_unit_core1
 
 elaborate $design 
 
@@ -91,12 +91,11 @@ set_dft_access_element -type wrapper       -parameter [list add_user_pins_to_bui
                                                         smpr_list "RM RME RMA RMB RMEA RMEB TEST1 TEST1A TEST1B TEST_RNM TEST_RNMA TEST_RNMB"]
 
 #----------- clock definition --------------------------------------------
-create_clock           -name clkgrp_noc              [get_ports clk_noc_i]                         -period 1 -waveform { 0 0.5 } 
+create_clock           -name clkgrp_noc              [get_ports clk]                         -period 1 -waveform { 0 0.5 } 
 create_clock           -name clkgrp_st               [get_ports REFCLK]                            -period 2 -waveform { 0 1 }   
-create_generated_clock -name clkgrp_st_div1          [get_pins u_pll_gen/pll_clk_1]                -source [get_ports REFCLK]        -divide_by 1 -master_clock clkgrp_st      -add
 create_generated_clock -name clkgrp_st_div2          [get_pins u_pll_gen/pll_clk_2]                -source [get_ports REFCLK]        -divide_by 2 -master_clock clkgrp_st      -add
-create_generated_clock -name clkgrp_st_div4          [get_pins u_pll_gen/pll_clk_4]                -source [get_ports REFCLK]        -divide_by 4 -master_clock clkgrp_st      -add
-create_generated_clock -name clkgrp_st_div2_memcore  [get_pins inst_memory_core1/u_divider_inst/z] -source [get_ports REFCLK]        -divide_by 2 -master_clock clkgrp_st      -add
+create_generated_clock -name clkgrp_st_div2_ram      [get_pins or1200_dc_ram/u_divider_inst/z]     -source [get_ports REFCLK]        -divide_by 2 -master_clock clkgrp_st      -add
+create_generated_clock -name clkgrp_st_div2_tag      [get_pins or1200_dc_tag/u_divider_inst/z]     -source [get_ports REFCLK]        -divide_by 2 -master_clock clkgrp_st      -add
 
 #----------- reset definition --------------------------------------------
 #Define asserts require to make clock path transparent and configure MBIST mode

@@ -16,8 +16,8 @@
 #############################################################################
 #!/bin/csh -f
 
-./common_cleanup.csh
-source ./common_setup.csh
+../common_cleanup.csh
+source ../common_setup.csh
 
 cd WORK
 

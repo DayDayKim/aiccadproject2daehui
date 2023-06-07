@@ -1,11 +1,6 @@
-../../../inputs/RTL/des_a1.v
-../../../inputs/RTL/des_b1.v
-../../../inputs/RTL/des_c1.v
-../../../inputs/RTL/des_ctl1.v
-../../../inputs/RTL/des_d1.v
-../../../inputs/RTL/des_decrypt1.v
-../../../inputs/RTL/des_encrypt1.v
-../../../inputs/RTL/common_modules.v
-../../../inputs/RTL/memory_core1.v
-../../../inputs/RTL/des_unit_core1.v
-../../../inputs/RTL/des_functions.v
+../../verilog/common_modules.v
+../../verilog/or1200_dc_fsm.v
+../../verilog/or1200_dc_ram.v
+../../verilog/or1200_dc_tag.v
+../../verilog/or1200_dc_top.v
+
