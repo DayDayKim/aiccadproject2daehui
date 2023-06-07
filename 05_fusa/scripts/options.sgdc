@@ -1,0 +1,7 @@
+current_design "des_unit_core0"
+
+ser_data -name "des_unit_core0" -lreg 0.01
+
+force_probability -type ACTIVE_LOW_FLIP_FLOP_SET ACTIVE_LOW_FLIP_FLOP_RESET -control_zero 0.01 -control_one 0.99 -functional
+force_probability -type ACTIVE_HIGH_FLIP_FLOP_SET ACTIVE_HIGH_FLIP_FLOP_RESET -control_zero 0.99 -control_one 0.01 -functional
+stil_data -mode Internal_scan -file /data3/Class/AICCAD/2023_1/2023_1_aiccad03/lib/sadsls0c4l2p2048x32m8b1w0c0p0d0r1s2z1rw00.ctl

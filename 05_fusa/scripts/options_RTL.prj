@@ -1,0 +1,32 @@
+lappend search_path .
+
+read_file ../inputs/des_a1.v
+read_file ../inputs/des_b1.v
+read_file ../inputs/des_c1.v
+read_file ../inputs/des_ctl1.v
+read_file ../inputs/des_d1.v
+read_file ../inputs/des_decrypt1.v
+read_file ../inputs/des_encrypt1.v
+read_file ../inputs/common_modules.v
+read_file ../inputs/memory_core0.v
+read_file ../inputs/des_unit_core0.v
+
+read_file -type sgdc "../scripts/options.sgdc"
+set_option language_mode mixed
+set_option projectwdir FUSA_WORK_DIR
+set_option overloadrules ErrorAnalyzeBBox
+set_option top des_unit_core0
+set_option enableSV yes
+
+define_goal test_goal -policy {dft_dsm } {
+    set_goal_option rules Info_soft_error_propagation
+    set_goal_option rules Info_diagnostic_coverage
+    set_parameter ser_report_registers_fault_priority on
+    set_parameter ser_register_report_top_contributors 100
+    set_parameter ser_dump_registers_with_zero_spfm_loss_contribution on
+    set_parameter ser_blackbox_observe_probability 0
+    set_parameter diagnostic_coverage_blackbox_sm_observe_probability 0
+    set_parameter ser_observe_nsr_initial_value 0
+    set_parameter diagnostic_coverage_sm_observe_initial_value 0
+}
+    
