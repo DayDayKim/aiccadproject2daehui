@@ -9,6 +9,6 @@ export intervals=3;
 export fusa_enable=no;     # Disables FuSa (Default)
 export diag=yes;	# Enables Diagnosis (Default)
 export  Compr=streaming;  # DFTMAX Ultra (Default)
-export share_wrapper_en=yes;	# Disables Shared Wrapper (Default)
+export share_wrapper_en=no;	# Disables Shared Wrapper (Default)
 export ILANE_LIB_PATH="/data3/Class/AICCAD/2023_1/2023_1_aiccad03/iLane_Rev5.0_libs"
 
