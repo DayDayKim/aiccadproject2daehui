@@ -58,6 +58,9 @@ write -format verilog -h -o ../outputs/${design}.v
 
 write -format verilog -h -o ../outputs/${design}_nopll.v
 
+report_timing > ../reports/${design}_timing.rpt
+report_area   > ../reports/${design}_area.rpt
+report_power  > ../reports/${design}_power.rpt
 
 
 exit
